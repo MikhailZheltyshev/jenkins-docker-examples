@@ -4,15 +4,14 @@
 #http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 
 #update as needed
-#export AWS_DEFAULT_PROFILE=dev
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_REGION=eu-north-1
 
-KeyName='ec2-user'
+KeyName='my_key'
 StackName='jenkins-ecs-stack'
 VPCIPRange='10.0.0.0/16'
 AllowedIPRange='0.0.0.0/0'
-DockerImage='ticketfly/jenkins-example-aws-ecs'
-InstanceType='t2.micro'
+DockerImage='mihalichzh/my_jenkins'
+InstanceType='t3.micro'
 
 echo "Looking for key '$KeyName'..."
 aws ec2 describe-key-pairs --key-name $KeyName

@@ -28,18 +28,16 @@
     "InstanceType": {
       "Description": "EC2 instance type",
       "Type": "String",
-      "Default": "t2.micro",
+      "Default": "t3.micro",
       "AllowedValues": [
-        "t2.micro",
-        "t2.small",
-        "t2.medium"
+        "t3.micro"
       ],
       "ConstraintDescription": "Must be a valid EC2 instance type."
     },
     "DockerImage": {
       "Description": "The docker image to use for Jenkins",
       "Type": "String",
-      "Default": "ticketfly/jenkins-example-aws-ecs"
+      "Default": "mihalichzh/my_jenkins"
     }
   },
   "Mappings": {
@@ -76,6 +74,9 @@
       },
       "ca-central-1": {
         "AMI": "ami-32bb0556"
+      },
+      "eu-north-1": {
+        "AMI": "ami-08163d891cc05881a"
       }
     }
   },
@@ -557,8 +558,8 @@
         "LaunchConfigurationName": {
           "Ref": "JenkinsECSLaunchConfiguration"
         },
-        "MinSize": "2",
-        "MaxSize": "5",
+        "MinSize": "0",
+        "MaxSize": "3",
         "DesiredCapacity": "2",
         "HealthCheckType": "EC2",
         "HealthCheckGracePeriod": "400",
